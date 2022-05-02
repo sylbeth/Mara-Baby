@@ -8,5 +8,5 @@ intents = discord.Intents.default()
 intents.members = True
 
 class TTRPGBot(commands.Bot):
-     def __init__(self, command_prefix = command_prefix, description = description, intents = intents):
-         super().__init__(command_prefix, description, intents)
+	def __init__(self, command_prefix = command_prefix, description = description, intents = intents):
+		super().__init__(command_prefix, description, intents)
