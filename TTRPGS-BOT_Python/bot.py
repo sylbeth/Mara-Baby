@@ -1,6 +1,11 @@
 from TTRPGBot import TTRPGBot
-import os
+from os import getenv
+from logging import getLogger, DEBUG, FileHandler, Formatter
 
-bot = TTRPGBot().bot
+logger = getLogger('discord')
+logger.setLevel(DEBUG)
+handler = FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+handler.setFormatter(Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+logger.addHandler(handler)
 
-bot.run(os.getenv('TOKEN'))
+bot = TTRPGBot(getenv('TOKEN'))
