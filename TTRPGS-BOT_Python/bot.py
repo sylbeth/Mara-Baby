@@ -2,10 +2,21 @@ from TTRPGBot import TTRPGBot
 from os import getenv
 from logging import getLogger, DEBUG, FileHandler, Formatter
 
-logger = getLogger('discord')
-logger.setLevel(DEBUG)
-handler = FileHandler(filename='discord.log', encoding='utf-8', mode='w')
-handler.setFormatter(Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
-logger.addHandler(handler)
 
-bot = TTRPGBot(getenv('TOKEN'))
+def set_log():
+	"""Setter of the log at the ``discord.log`` file."""
+	
+	logger = getLogger('discord')
+	logger.setLevel(DEBUG)
+	handler = FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+	handler.setFormatter(Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+	logger.addHandler(handler)
+
+
+def start_bot():
+	"""Sets the log for the TTRPGBot and starts running it."""
+	set_log()
+	bot = TTRPGBot(getenv('TOKEN'))
+
+
+start_bot()
