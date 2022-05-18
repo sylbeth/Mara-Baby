@@ -32,37 +32,19 @@ class General(Cog, name=name, description=description, command_attrs=dict(hidden
 
 	@command(name='hello', brief="Says hello back", description="Says hello back like a good child would do (in code style)")
 	async def hello(self, context:Context):
-		"""Says hello to the bot and the bot replies back.
-		
-		Parameters
-		----------
-		context: [:class:`Context`]
-			Context in which the command has been called.
-		"""
+		"""Says hello to the bot and the bot replies back."""
 		
 		await context.send("Hello World.")
 
 	@command(name='greet', brief="Greets you back", description="Greets you back like a good child would do (in bot style)")
 	async def greet(self, context:Context):
-		"""Greets the bot and the bot replies back.
-		
-		Parameters
-		----------
-		context: [:class:`Context`]
-			Context in which the command has been called.
-		"""
+		"""Greets the bot and the bot replies back."""
 		
 		await context.send("SA-LU-TATIONS!")
 
 	@command(name='replace', brief="Replaces your message", description="Replaces your message because this was me testing how to replace messages")
 	async def replace(self, context:Context):
-		"""Asks the bot to replace your message with something else and the bot does so.
-		
-		Parameters
-		----------
-		context: [:class:`Context`]
-			Context in which the command has been called.
-		"""
+		"""Asks the bot to replace your message with something else and the bot does so."""
 		
 		await context.message.delete()
 		await context.send(f"I am replacing a message by {context.author.name}")

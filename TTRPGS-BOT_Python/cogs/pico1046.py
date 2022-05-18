@@ -34,13 +34,7 @@ class Ilyal(Cog, name=name, description=description, command_attrs=dict(hidden=h
 
 	@command(name='1046', brief="Says hi to their moms", description="Says hi to either LuLu or Sylbeth")
 	async def pico1046(self, context:Context):
-		"""Says hi to the bot in a caring way and the bot replies back.
-		
-		Parameters
-		----------
-		context: [:class:`Context`]
-			Context in which the command has been called.
-		"""
+		"""Says hi to the bot in a caring way and the bot replies back."""
 		
 		if context.author.id in family_ids:
 			await context.send("Hi mom! Hope you are having a nice day, I wuv you!")
@@ -49,13 +43,7 @@ class Ilyal(Cog, name=name, description=description, command_attrs=dict(hidden=h
 
 	@command(name='ily', brief="Thanks their moms for loving them", description="Thanks either LuLu or Sylbeth for loving them")
 	async def ily(self, context:Context):
-		"""Says I love you to the bot and the bot replies back.
-		
-		Parameters
-		----------
-		context: [:class:`Context`]
-			Context in which the command has been called.
-		"""
+		"""Says I love you to the bot and the bot replies back."""
 		
 		if context.author.id in family_ids:
 			await context.send('Thanks, mom! It makes me so happy, I love you too :")')
@@ -64,13 +52,7 @@ class Ilyal(Cog, name=name, description=description, command_attrs=dict(hidden=h
 
 	@command(name='hug', brief="Hugs you back", description="Hugs you back because they love hugs and hugging is amazing")
 	async def hug(self, context:Context):
-		"""Hugs the bot and the bot hugs back.
-		
-		Parameters
-		----------
-		context: [:class:`Context`]
-			Context in which the command has been called.
-		"""
+		"""Hugs the bot and the bot hugs back."""
 		
 		if context.author.id in family_ids:
 			await context.send('Awww, mom! I missed you too, I love your hugs so much :") *hugs*')
