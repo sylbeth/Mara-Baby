@@ -20,4 +20,8 @@ def start_bot():
 	set_log()
 	bot = TTRPGBot(getenv('TOKEN'))
 
-start_bot()
+def main():
+	start_bot()
+
+if __name__ == '__main__':
+	main()
