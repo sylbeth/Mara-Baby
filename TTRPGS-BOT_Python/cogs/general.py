@@ -48,3 +48,10 @@ class General(Cog, name=name, description=description, command_attrs=dict(hidden
 		
 		await context.message.delete()
 		await context.send(f"I am replacing a message by {context.author.name}")
+
+def setup(bot):
+	cog = General(bot)
+	bot.add_cog(cog)
+
+def teardown(bot):
+	bot.remove_cog("General")

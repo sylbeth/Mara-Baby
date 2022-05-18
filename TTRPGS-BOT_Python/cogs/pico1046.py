@@ -58,3 +58,10 @@ class Ilyal(Cog, name=name, description=description, command_attrs=dict(hidden=h
 			await context.send('Awww, mom! I missed you too, I love your hugs so much :") *hugs*')
 		else:
 			await context.send("Awww, thanks! Hugs are nice! Here, have one too! *hugs*")
+
+def setup(bot):
+	cog = Ilyal(bot)
+	bot.add_cog(cog)
+
+def teardown(bot):
+	bot.remove_cog("Ilyal")

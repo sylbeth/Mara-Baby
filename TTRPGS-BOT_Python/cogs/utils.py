@@ -58,4 +58,12 @@ class Utils(Cog, name=name, description=description, command_attrs=dict(hidden=h
 		"""Triggers whenever the bot is ready and prints its username on console."""
 		
 		print(f"{self.bot.user.name}'s body is ready")
-	
+
+def setup(bot):
+	cog = Utils(bot)
+	bot.add_cog(cog)
+	bot.help_command.cog = cog
+
+def teardown(bot):
+	bot.remove_cog("Utils")
+	bot.help_command.cog = None

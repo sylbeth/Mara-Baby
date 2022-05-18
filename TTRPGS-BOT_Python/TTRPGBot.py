@@ -47,10 +47,4 @@ class TTRPGBot(Bot):
 		"""
 		
 		super().__init__(command_prefix=command_prefix, description=description, intents=intents, strip_after_prefix=strip_after_prefix)
-		self.add_cog
-		self.add_cog(Ilyal(self))
-		general = General(self)
-		self.add_cog(general)
-		self.help_command.cog = general
-		self.add_cog(Utils(self))
 		self.run(token)
