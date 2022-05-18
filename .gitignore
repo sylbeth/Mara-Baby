@@ -1,3 +1,4 @@
 
 *.pyc
 discord.log
+package_install_log
