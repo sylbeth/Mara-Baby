@@ -1,13 +1,15 @@
 from discord import Intents
 from discord.ext.commands import Bot, when_mentioned_or
-from Cogs.pico1046 import Ilyal
-from Cogs.general import General
+from cogs.pico1046 import Ilyal
+from cogs.general import General
+from cogs.utils import Utils
 
 
 command_prefix = when_mentioned_or('ttr')
 description = """A multi-purpose bot for all kinds of tabletop role-playing games.
 It's a nice child, take care of my child."""
 intents = Intents.default()
+#intents.message_content = True
 strip_after_prefix = True
 
 class TTRPGBot(Bot):
@@ -50,4 +52,5 @@ class TTRPGBot(Bot):
 		general = General(self)
 		self.add_cog(general)
 		self.help_command.cog = general
+		self.add_cog(Utils(self))
 		self.run(token)

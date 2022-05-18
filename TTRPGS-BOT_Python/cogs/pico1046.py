@@ -1,4 +1,5 @@
-from discord.ext.commands import Cog, Context, command
+from discord.ext.commands import Cog, Context
+from cogs.utils import command
 from os import getenv
 
 

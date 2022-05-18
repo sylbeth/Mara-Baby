@@ -18,5 +18,4 @@ def start_bot():
 	set_log()
 	bot = TTRPGBot(getenv('TOKEN'))
 
-
 start_bot()
