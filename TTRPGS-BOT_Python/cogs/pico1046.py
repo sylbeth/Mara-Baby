@@ -1,5 +1,5 @@
-from discord.ext.commands import Cog, Context
-from cogs.utils import command
+from discord.ext.commands import Context, command
+from cogs.utils import Cog, basename
 from os import getenv
 
 
@@ -60,8 +60,10 @@ class Ilyal(Cog, name=name, description=description, command_attrs=dict(hidden=h
 			await context.send("Awww, thanks! Hugs are nice! Here, have one too! *hugs*")
 
 def setup(bot):
+	print(f"Setting up {basename(__file__)}...")
 	cog = Ilyal(bot)
 	bot.add_cog(cog)
 
 def teardown(bot):
-	bot.remove_cog("Ilyal")
+	print(f"Unloading {basename(__file__)}...")
+	bot.remove_cog('Ilyal')

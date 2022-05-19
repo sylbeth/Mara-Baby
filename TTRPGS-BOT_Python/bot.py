@@ -1,5 +1,5 @@
 from TTRPGBot import TTRPGBot
-from os import getenv, getcwd
+from os import getenv
 from os.path import join as joinpath
 from logging import getLogger, DEBUG, FileHandler, Formatter
 

@@ -1,8 +1,5 @@
 from discord import Intents
 from discord.ext.commands import Bot, when_mentioned_or
-from cogs.pico1046 import Ilyal
-from cogs.general import General
-from cogs.utils import Utils
 
 
 command_prefix = when_mentioned_or('ttr')
@@ -47,4 +44,5 @@ class TTRPGBot(Bot):
 		"""
 		
 		super().__init__(command_prefix=command_prefix, description=description, intents=intents, strip_after_prefix=strip_after_prefix)
+		self.load_extension('cogs.utils')
 		self.run(token)

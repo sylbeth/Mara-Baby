@@ -1,5 +1,5 @@
-from discord.ext.commands import Cog, Context
-from cogs.utils import command
+from discord.ext.commands import Context, command
+from cogs.utils import Cog, basename
 
 
 name = 'General'
@@ -50,8 +50,10 @@ class General(Cog, name=name, description=description, command_attrs=dict(hidden
 		await context.send(f"I am replacing a message by {context.author.name}")
 
 def setup(bot):
+	print(f"Setting up {basename(__file__)}...")
 	cog = General(bot)
 	bot.add_cog(cog)
 
 def teardown(bot):
-	bot.remove_cog("General")
+	print(f"Unloading {basename(__file__)}...")
+	bot.remove_cog('General')

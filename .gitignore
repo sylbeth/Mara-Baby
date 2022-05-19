@@ -1,4 +1,9 @@
 
-*.pyc
-discord.log
-package_install_log
+#temporary files
+**/temp
+
+#pycache
+**/__pycache__
+
+#replit
+.replit
