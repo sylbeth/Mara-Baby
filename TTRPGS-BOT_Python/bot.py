@@ -18,7 +18,8 @@ def set_log():
 def start_bot():
 	"""Sets the log for the TTRPGBot and starts running it."""
 	set_log()
-	bot = TTRPGBot(getenv('TOKEN'))
+	Mara = TTRPGBot(getenv('TOKEN'))
+
 
 def main():
 	start_bot()

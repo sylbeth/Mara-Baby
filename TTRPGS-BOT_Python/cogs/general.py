@@ -2,11 +2,7 @@ from discord.ext.commands import Context, command
 from cogs.utils import Cog, basename
 
 
-name = 'General'
-description = "Those commands that are general-purpose and don't fall into any specific category."
-hidden = False
-
-class General(Cog, name=name, description=description, command_attrs=dict(hidden=hidden)):
+class General(Cog, name='General', description="Those commands that are general-purpose and don't fall into any specific category."):
 	"""Cog that contains general-purpose commands for a TTRPGBot.
 
 	Attributes
@@ -50,10 +46,8 @@ class General(Cog, name=name, description=description, command_attrs=dict(hidden
 		await context.send(f"I am replacing a message by {context.author.name}")
 
 def setup(bot):
-	print(f"Setting up {basename(__file__)}...")
 	cog = General(bot)
 	bot.add_cog(cog)
 
 def teardown(bot):
-	print(f"Unloading {basename(__file__)}...")
 	bot.remove_cog('General')

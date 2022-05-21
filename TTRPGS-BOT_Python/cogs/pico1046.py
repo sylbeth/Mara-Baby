@@ -1,14 +1,10 @@
 from discord.ext.commands import Context, command
-from cogs.utils import Cog, basename
+from cogs.utils import HidCog, basename
 from os import getenv
 
-
-name = 'Ilyal'
-description = "Those commands that are only meant to be used with love purposes and between loved ones."
-hidden = True
 family_ids = [int(getenv('Sylbeth')), int(getenv('LuLu'))]
 
-class Ilyal(Cog, name=name, description=description, command_attrs=dict(hidden=hidden)):
+class Ilyal(HidCog, name='Ilyal', description="Those commands that are only meant to be used with love purposes and between loved ones."):
 	"""Cog that contains secret, special commands for a TTRPGBot.
 
 	Attributes
@@ -60,10 +56,8 @@ class Ilyal(Cog, name=name, description=description, command_attrs=dict(hidden=h
 			await context.send("Awww, thanks! Hugs are nice! Here, have one too! *hugs*")
 
 def setup(bot):
-	print(f"Setting up {basename(__file__)}...")
 	cog = Ilyal(bot)
 	bot.add_cog(cog)
 
 def teardown(bot):
-	print(f"Unloading {basename(__file__)}...")
 	bot.remove_cog('Ilyal')
