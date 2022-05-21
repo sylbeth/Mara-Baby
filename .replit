@@ -1,8 +1,8 @@
-run = "python TTRPGS-BOT_Python/bot.py;python"
+run = "python Mara_Python/runner.py;python"
 language = "python3"
 onBoot="echo Booting up!"
 
 [packager]
-afterInstall="date >> TTRPGS-BOT_Python/temp/package_install_log"
+afterInstall="date >> Mara_Python/temp/package_install_log"
 ignoredPaths=[".git"]
 ignoredPackages=["twitter", "discord"]

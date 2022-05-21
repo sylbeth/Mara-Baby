@@ -8,7 +8,7 @@ command_prefix = when_mentioned_or('ttr')
 intents = Intents.default()
 #intents.message_content = True
 
-class TTRPGBot(Bot):
+class Mara(Bot):
 	"""Initializer of the TTRPG bot.
 		
 	Attributes

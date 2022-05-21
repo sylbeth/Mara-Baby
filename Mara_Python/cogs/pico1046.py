@@ -1,11 +1,11 @@
-from discord.ext.commands import Context, command
-from cogs.utils import HidCog, basename
+from discord.ext.commands import Context, Cog, command
+from cogs.utils import HidCog
 from os import getenv
 from replit import db
 
 family_ids = [int(getenv('Sylbeth')), int(getenv('LuLu'))]
 
-class Ilyal(HidCog, name='Ilyal', description="Those commands that are only meant to be used with love purposes and between loved ones."):
+class Ilyal(Cog, metaclass=HidCog, name='Ilyal', description="Those commands that are only meant to be used with love purposes and between loved ones."):
 	"""Cog that contains secret, special commands for a TTRPGBot.
 
 	Attributes

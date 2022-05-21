@@ -1,8 +1,8 @@
-from discord.ext.commands import Context, command
-from cogs.utils import Cog, basename
+from discord.ext.commands import Context, Cog, command
+from cogs.utils import PubCog
 
 
-class General(Cog, name='General', description="Those commands that are general-purpose and don't fall into any specific category."):
+class General(Cog, metaclass=PubCog, name='General', description="Those commands that are general-purpose and don't fall into any specific category."):
 	"""Cog that contains general-purpose commands for a TTRPGBot.
 
 	Attributes

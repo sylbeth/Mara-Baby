@@ -1,20 +1,25 @@
-from discord.ext.commands import command, group, Cog as SupCog, Context
+from discord.ext.commands import Context, Cog, CogMeta, command, group
 from discord.ext.commands.errors import ExtensionAlreadyLoaded, ExtensionNotLoaded, ExtensionFailed, NoEntryPointError, ExtensionNotFound
 from errors import ExtensionBanned, ExtensionAlreadyBanned, ExtensionNotBanned
 from os import listdir
-from os.path import join as joinpath, basename
+from os.path import join as joinpath
 
 
-class Cog(SupCog, command_attrs=dict(ignore_extra=False, hidden=False)):
+class PubCog(CogMeta):
 	"""Modification of commands.Cog that changes the default value for ``ignore_extra`` from ``True`` to ``False``."""
+	def __new__(cls, *args, command_attrs={'ignore_extra':False, 'hidden':False, 'invoke_without_command':True}, **kwargs):
+		name, desc = args
+		super().__new__(name, desc, command_attrs, kwargs)
 
-
-class HidCog(SupCog, command_attrs=dict(ignore_extra=False, hidden=True)):
+class HidCog(CogMeta):
 	"""Modification of commands.Cog that changes the default value for ``ignore_extra`` from ``True`` to ``False``."""
+	def __new__(cls, *args, command_attrs={'ignore_extra':False, 'hidden':True, 'invoke_without_command':True}, **kwargs):
+		name, desc = args
+		super().__new__(name, desc, command_attrs, kwargs)
 
 
 def all_extensions_loader(bot):
-	cogs_path = joinpath('TTRPGS-BOT_Python','cogs')
+	cogs_path = joinpath('Mara_Python','cogs')
 	for filename in listdir(cogs_path):
 		if filename.endswith('.py'):
 			try:
@@ -25,7 +30,7 @@ def all_extensions_loader(bot):
 				pass
 
 def all_extensions_unloader_full(bot):
-	cogs_path = joinpath('TTRPGS-BOT_Python','cogs')
+	cogs_path = joinpath('Mara_Python','cogs')
 	for filename in listdir(cogs_path):
 		if filename.endswith('.py') and filename != 'utils.py':
 			try:
@@ -79,7 +84,7 @@ def all_extensions_unbanner(bot):
 		bot.extension_ban_list = list()
 
 
-class Utils(HidCog, name='Utils', description="Those listeners and commands that are useful to the bot itself."):
+class Utils(Cog, metaclass=HidCog, name='Utils', description="Those listeners and commands that are useful to the bot itself."):
 	"""Cog that contains utilities and useful listeners for a TTRPGBot.
 
 	Attributes
