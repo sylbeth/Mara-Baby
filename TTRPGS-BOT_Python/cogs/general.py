@@ -45,6 +45,7 @@ class General(Cog, name='General', description="Those commands that are general-
 		await context.message.delete()
 		await context.send(f"I am replacing a message by {context.author.name}")
 
+
 def setup(bot):
 	cog = General(bot)
 	bot.add_cog(cog)
