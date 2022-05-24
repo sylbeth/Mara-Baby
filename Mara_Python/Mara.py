@@ -1,5 +1,5 @@
 from discord import Intents
-from discord.ext.commands import Bot, when_mentioned_or
+from discord.ext.commands import Bot, when_mentioned_or, ExtensionNotLoaded, ExtensionNotFound
 from errors import ExtensionBanned, ExtensionAlreadyBanned, ExtensionNotBanned
 from cogs.utils import all_extensions_loader
 from logger import to_log as print
@@ -163,8 +163,11 @@ They are a nice child, take care of my child.""", intents: Intents=_intents, str
             self.extension_ban_list.append(name)
             try:
                 self.unload_extension(name)
-            except Exception:
-                pass
+                print(f"Banning unloaded extension {name}...")
+            except ExtensionNotLoaded:
+                print(f"Banning extension {name}, which hasn't been loaded...")
+            except ExtensionNotFound:
+                print(f"Banning extension {name}, which hasn't been found...")
 
     def unban_extension(self, name: str, *, package: str=None) -> None:
         """Unbans an extension.
@@ -191,5 +194,6 @@ They are a nice child, take care of my child.""", intents: Intents=_intents, str
         name: str = self._resolve_name(name, package)
         try:
             self.extension_ban_list.remove(name)
+            print(f"Unbanning extension {name}...")
         except ValueError:
             raise ExtensionNotBanned(name)
