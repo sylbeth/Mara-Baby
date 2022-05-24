@@ -1,8 +1,59 @@
-run = "python Mara_Python/runner.py;python"
-language = "python3"
+run = ["python3", "Mara_Python/runner.py"]
+hidden = ["README.md", ".gitignore", "**/__pycache__", "**/.mypy_cache", "**/*.pyc"]
 onBoot="echo Booting up!"
+
+language = "python3"
+[languages.python3]
+pattern = "**/*.py"
+syntax = "python"
+    [languages.python3.languageServer]
+    start = ["pyls"]
+
+[unitTest]
+language = "python3"
+
+[debugger]
+support = true
+
+    [debugger.interactive]
+    transport = "localhost:0"
+    startCommand = ["dap-python", "runner.py"]
+
+        [debugger.interactive.integratedAdapter]
+        dapTcpAddress = "localhost:0"
+
+        [debugger.interactive.initializeMessage]
+        command = "initialize"
+        type = "request"
+
+            [debugger.interactive.initializeMessage.arguments]
+            adapterID = "debugpy"
+            clientID = "replit"
+            clientName = "replit.com"
+            columnsStartAt1 = true
+            linesStartAt1 = true
+            locale = "en-us"
+            pathFormat = "path"
+            supportsInvalidatedEvent = true
+            supportsProgressReporting = true
+            supportsRunInTerminalRequest = true
+            supportsVariablePaging = true
+            supportsVariableType = true
+
+        [debugger.interactive.launchMessage]
+        command = "attach"
+        type = "request"
+
+            [debugger.interactive.launchMessage.arguments]
+            logging = {}
 
 [packager]
 afterInstall="date >> Mara_Python/temp/package_install_log"
+language = "python3"
 ignoredPaths=[".git"]
-ignoredPackages=["twitter", "discord"]
+ignoredPackages=["twitter", "discord", "unit_tests"]
+
+    [packager.features]
+    enabledForHosting = false
+    packageSearch = true
+    guessImports = true

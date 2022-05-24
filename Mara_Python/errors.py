@@ -3,7 +3,7 @@ from discord.ext.commands import ExtensionError
 
 class ExtensionBanned(ExtensionError):
     """An exception raised when an extension has been banned.
-
+    
     This inherits from :exc:`ExtensionError`
     """
     def __init__(self, name):
@@ -12,7 +12,7 @@ class ExtensionBanned(ExtensionError):
 
 class ExtensionAlreadyBanned(ExtensionError):
     """An exception raised when an extension has already been banned.
-
+    
     This inherits from :exc:`ExtensionError`
     """
     def __init__(self, name):
@@ -21,7 +21,7 @@ class ExtensionAlreadyBanned(ExtensionError):
 
 class ExtensionNotBanned(ExtensionError):
     """An exception raised when an extension was not banned.
-
+    
     This inherits from :exc:`ExtensionError`
     """
     def __init__(self, name):
