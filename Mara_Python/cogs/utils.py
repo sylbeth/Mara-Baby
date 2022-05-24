@@ -5,16 +5,23 @@ from os.path import join as joinpath
 from logger import to_log as print
 
 
-class PubCog(CogMeta):
-    """Modification of commands.Cog that changes the default value for ``ignore_extra`` from ``True`` to ``False``."""
-    def __new__(cls: type, name: str, desc: str, **kwargs):
-        return super().__new__(name, desc, {'ignore_extra':False, 'hidden':False, 'invoke_without_command':True}, kwargs)
+class PubMeta(CogMeta):
+    """Modification of commands.CogMeta that changes the default value for ``ignore_extra`` from ``True`` to ``False``."""
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls, *args, command_attrs={'ignore_extra':False, 'hidden':False, 'invoke_without_command':True}, **kwargs)
 
-class HidCog(CogMeta):
+class PubCog(Cog, metaclass=PubMeta):
     """Modification of commands.Cog that changes the default value for ``ignore_extra`` from ``True`` to ``False``."""
-    def __new__(cls: type, name: str, desc: str, **kwargs):
-        return super().__new__(name, desc, {'ignore_extra':False, 'hidden':True, 'invoke_without_command':True}, kwargs)
+    pass
 
+class HidMeta(CogMeta):
+    """Modification of commands.CogMeta that changes the default value for ``ignore_extra`` from ``True`` to ``False``."""
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls, *args, command_attrs={'ignore_extra':False, 'hidden':True, 'invoke_without_command':True}, **kwargs)
+
+class HidCog(Cog, metaclass=HidMeta):
+    """Modification of commands.Cog that changes the default value for ``ignore_extra`` from ``True`` to ``False``."""
+    pass
 
 def all_extensions_loader(bot: Bot) -> None:
     cogs_path: str = joinpath('Mara_Python','cogs')
@@ -99,10 +106,10 @@ def all_extensions_banner(bot: Bot) -> None:
 
 def all_extensions_unbanner(bot: Bot) -> None:
     if hasattr(bot, 'extension_ban_list'):
-        bot.extension_ban_list: list = list()
+        bot.extension_ban_list = list()
 
 
-class Utils(Cog, name='Utils', description="Those listeners and commands that are useful to the bot itself."):
+class Utils(HidCog, name='Utils', description="Those listeners and commands that are useful to the bot itself."):
     """Cog that contains utilities and useful listeners for a TTRPGBot.
     
     Attributes

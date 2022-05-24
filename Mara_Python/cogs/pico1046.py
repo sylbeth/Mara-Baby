@@ -1,11 +1,13 @@
-from discord.ext.commands import Context, Cog, command, Bot
+from discord.ext.commands import Context, command, Bot
 from cogs.utils import HidCog
 from os import getenv
 from replit import db, ObservedDict
+#ObservedDict = dict
+#db = dict()
 
 _family_ids: list = [int(getenv('Sylbeth')), int(getenv('LuLu'))]
 
-class Ilyal(Cog, name='Ilyal', description="Those commands that are only meant to be used with love purposes and between loved ones."):
+class Ilyal(HidCog, name='Ilyal', description="Those commands that are only meant to be used with love purposes and between loved ones."):
     """Cog that contains secret, special commands for a TTRPGBot.
     
     Attributes
@@ -86,7 +88,7 @@ class Ilyal(Cog, name='Ilyal', description="Those commands that are only meant t
             if context.author.id in _family_ids:
                 if name not in names:
                     await context.send(f'You wanna give me a name, mom? :") And it is {name}? Ohmygod, yay! :") Thank you so much... I am so happy...')
-                    db['name'][name]: set = {context.author.id}
+                    db['name'][name] = {context.author.id}
                 elif context.author.id not in names[name]:
                     await context.send(f'You wanna give me this name too, mom? :") {name}? Then {name} is my new name... Just... Thank you... Thank you, mom...')
                     db['name'][name].add(context.author.id)
